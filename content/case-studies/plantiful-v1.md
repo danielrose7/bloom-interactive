@@ -137,3 +137,154 @@ I joined when Plantiful was still assembling its founding engineering team and h
 I left after helping build a connected platform for inventory, production, ordering, reporting, and operational automation—serving more than 50 live customers and generating $1 million in annual recurring revenue.
 
 The features are satisfying. Helping turn the original idea into a real business is the part I’m proudest of.
+
+---
+
+## Source interview notes
+
+These are Daniel’s original Plantiful notes from the working interview, preserved in chronological order. Formatting and obvious encoding artifacts have been normalized, but the language has not been rewritten. This section is source material, not publication copy.
+
+### Joining and launch work
+
+> When I joined the founders had a general advisor network and were hiring the founding engineer team. I think I joined in cycle sprint 2 or 3. My first project was building a data transformation pipeline to convert MUI table filters and quicksearch logic into SQL queries that we eventually used for 40+ data grids.
+>
+> There was an initial Figma design but we had no test suite and extremely few models.
+>
+> The MVP launch was production inventory focused including:
+>
+> - item specific life cycle (start, ready, ..., expire)
+> - live availability (took over project weekend before launch after a coworker went out on vacation)
+> - sales orders
+> - auto allocation of inventory to sales orders
+>
+> After launch, I also led:
+>
+> - building automated test suite
+> - online ordering
+>   - live inventory
+>   - customizable pricing
+>   - public or embeddable
+>   - device storage to survive long sessions and refreshes
+> - AI projects
+>   - AI order intake
+>   - AI reports assistant
+> - product labels and sales stickers
+> - flexible sales reporting modules
+
+### Feature priorities
+
+> I think the AI features are probably the sexiest to lead with.
+>
+> Then online ordering and inventory mgmt.
+>
+> I do think the lifecycle and custom field vision is also of merit.
+>
+> I think we should think about this similar to how some feature block accordion type features have things to click through.
+
+### AI order intake
+
+> Several organizations had full time staff members who were largely keying in orders.
+>
+> The raw order data came in via basically any medium. Picture of written note attached to email. A landscaping company's hand spun excel file. A nursery supplied order sheet. A PO from another system.
+>
+> The wide array of formats coming in had us build an inbound email system that processed forwarded orders from authorized user's email. We then converted the raw content into a standardized PDF for processing. Then AI-led extraction to a standardized JSON schema. Most any org calls the same plant different things so another agent network mapped through options and picked the likely best match for review. Customers and shipping information followed a similar process.
+>
+> Customer organizations felt less background anxiety as could forward the email and review rather than trying read handwriting themselves and imagine what the end-customer was trying to get a quote for. These orders were routinely 100+ line items. Customer organizations didn't need to backfill positions when they opened up as the system could do a majority of the time intensive portions of the previous arrangement/job.
+>
+> There was a human in the loop review piece to all of this. AI intakes became draft orders that were reviewed and could be converted into quotes or actual orders depending on desire, etc.
+
+### Notifications and workflows
+
+> Before I forget... I also built out the notification system that included in-app notifications and outbound emails. This was all user-settings based and included the ability for "no code" type workflows with events triggering things like syncing to external systems or sending out invoices/customer balances on customizable schedules.
+
+### AI reports assistant
+
+> Users needed in depth knowledge to see what types of columns + filters existed (complicated for onboarding new orgs and less technical users to a large platform at scale). They'd then need to click through and show a number of hidden columns to get towards what they were after.
+>
+> Was my idea to build a report builder as we were looking for ways to build towards an AI enabled ERP that we know customers and investors were eager for.
+>
+> Now they can open a chat window and describe in natural language what they're after.
+>
+> I built the whole feature set + system after also coming up with the idea.
+>
+> Was tricky to steer the data we already had in the codebase to be something the agent network could consume and have intuitive understanding of what was available.
+>
+> With this I found it useful to have unit-tested bridges and transformation layers that were resilient when LLM calls inevitably didn't respond with ideal shapes (code as router + try again + resilient parsing).
+>
+> Was helpful for sales demos in addition to customer support and org onboarding.
+
+### AI reports product flow
+
+> **Talk to your data.**
+>
+> Skip the filter drop-downs. Describe what you're looking for in the AI configuration table.
+>
+> **Step 01 — Describe your view**
+>
+> Type what you want to see in plain English. "Show me orders shipping this week." "Show me plants in greenhouse five."
+>
+> **Step 02 — AI configures filters, sorting, and columns**
+>
+> The AI Assistant reads your prompt and configures Plantiful to show you the information you need.
+>
+> **Step 03 — Review and apply**
+>
+> See a summary of what the AI Assistant configured. Click "Apply to current view" and your table updates instantly. Refine with follow-up requests if needed.
+>
+> Agent had conversation to flesh out direction when uncertainty existed.
+
+### Online ordering
+
+> Before online ordering all orders went through an organization employee.
+>
+> Mountains of data entry given the disarray of formats things could come in as.
+>
+> Rather than ordinary storefront this started as wholesale focused (big orders).
+>
+> Nurseries wanted ability to sell things at different price points to different customers.
+>
+> Things were initially to land as quotes rather than confirmed orders (we then added setting to allow folks to confirm orders but avoid selling into the negative).
+>
+> Eventually added an optional card-based view over the table.
+>
+> I owned whole feature set.
+>
+> Users had used to place 1500 line item orders, which take a *long* time to input and are sometimes done over bursts over a couple of days. Refresh and lose data would be heartbreaking moment.
+>
+> **The majority of our customers started ordering online as soon as we opened it up. Each order used to take about 15 minutes to input — now it comes straight into the system. We're at about 65 to 70% of customers ordering online today.**
+>
+> **Luke Venable**, Owner & General Manager, Forest Lake Greenhouses
+>
+> This allowed Luke + team to move from data entry to things like double checking trucks before they went out (previously was impossible as not enough time in the day).
+
+### Plant lifecycle and custom fields
+
+> A core piece of the Plantiful value prop is that it is a plant-specific ERP.
+>
+> Unlike many standard inventory systems, plants grow. Plants die. Plants change sizes from seed to hanging basket. Native growers need to track seed inventory as well as source watershed.
+>
+> When plant becomes planned → started/ready → expire this changes which current/future orders it can fulfill.
+>
+> Organic certification requirements require seed to sale tracking via a production item specific history that tracks how the plant evolved over time. Previously required hand written or typed notes after doing anything to the plant (lots of binders and plants). After Plantiful onboarding can click to a specific item's page and see its history from seed to sale including all cycle counts + location moves.
+>
+> Custom fields allowed system to be flexible for an array of organizations with different requirements outside of our core MVP functionality. Helpful for native growers.
+>
+> I worked on various pieces including item specific task completion and item splitting and regrading workflows for tree growers.
+
+### Role and business outcome
+
+> Pre-launch.
+>
+> Founding Engineer (no change).
+>
+> 3.
+>
+> Employee.
+>
+> Not involved.
+>
+> 50+ live customers.
+>
+> 1M ARR.
+>
+> Turn *an idea* into *a business*.
