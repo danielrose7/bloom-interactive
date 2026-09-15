@@ -49,6 +49,12 @@ html {
   animation: 240ms ease-out both bloom-page-in;
 }
 
+::view-transition-group(.bloom-logo-share),
+::view-transition-group(.bloom-wordmark-share) {
+  animation-duration: 320ms;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
 @keyframes bloom-page-out {
   to { opacity: 0; }
 }
@@ -161,6 +167,7 @@ pre code {
 
 .phone-popover {
   position: relative;
+  z-index: 1;
   width: min(420px, 100%);
   padding: 2.5rem;
   border: 1px solid var(--page-border);
@@ -395,6 +402,7 @@ pre code {
 .contact-celebration {
   position: fixed;
   inset: 0;
+  z-index: 2;
   overflow: hidden;
   pointer-events: none;
 }
@@ -442,6 +450,18 @@ pre code {
 }
 
 @media (max-width: 760px) {
+  .contact-celebration i {
+    top: 20%;
+    width: 7px;
+    height: 14px;
+    animation-duration: 1000ms;
+  }
+
+  .contact-celebration i:nth-child(2n) {
+    width: 10px;
+    height: 10px;
+  }
+
   .theme-home section[class*="hero"] {
     min-height: auto;
     padding-top: 6.5rem;
@@ -517,13 +537,17 @@ pre code {
   }
 
   .theme-home section[class*="letter"] {
-    gap: 1.25rem;
+    gap: 1rem;
+  }
+
+  .theme-home [class*="letterLabel"] {
+    padding-top: 0;
   }
 
   .theme-home [class*="letterBody"] {
-    padding: 0.25rem 0 0.25rem 1.25rem;
+    padding: 1.5rem 0 0;
     border: 0;
-    border-left: 3px solid var(--page-accent);
+    border-top: 3px solid var(--page-accent);
     border-radius: 0;
     background: transparent;
     box-shadow: none;
@@ -531,16 +555,22 @@ pre code {
   }
 
   .theme-home [class*="letterBody"] h2 {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.75rem;
   }
 
   .theme-home [class*="letterBody"] p {
     color: var(--page-muted);
+    font-size: 1rem;
+    line-height: 1.7;
   }
 
   :root[data-theme="light"] .theme-home [class*="letterBody"] {
     border: 0;
-    border-left: 3px solid var(--page-accent);
+    border-top: 3px solid var(--page-accent);
+  }
+
+  .theme-home [class*="letterBody"] [class*="signature"] {
+    width: min(280px, 85%);
   }
 
   .theme-home [class*="letterBody"] [class*="signature"] img {

@@ -81,7 +81,7 @@ export default function Home() {
       </div><Link className={styles.inlineLink} href="/portfolio" transitionTypes={["bloom-navigation"]}>See selected client work →</Link></section>
 
       <section className={styles.letter} aria-labelledby="letter-title">
-        <div className={styles.letterLabel}><span>Letter from Dan</span><small>Silverton, Colorado<br />September 2026</small></div>
+        <div className={styles.letterLabel}><span>Letter from Dan</span></div>
         <div className={styles.letterBody}>
           <h2 id="letter-title">If it’s on the internet, we can build it*</h2>
           <p>A core memory of my childhood is watching a seed turn into a garden. My dad let me sketch out which seeds should go where. We planted. We watered. We sat together on the corner and sold our excess produce to the neighborhood: Dan’s Veggies, my first business. I even added it as a contact in my dad’s PalmPilot—basically a luxurious website in the ’90s.</p>

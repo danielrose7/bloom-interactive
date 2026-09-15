@@ -1,15 +1,18 @@
 "use client";
 
 import styles from './layout.module.css'
-import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
+import { useEffect, useRef, useState, ViewTransition } from 'react'
 
 export const siteTitle = 'Bloom Interactive';
 const name = 'Bloom Interactive'
 
 export default function Layout({ children, home }) {
   const [theme, setTheme] = useState('dark')
+  const [navVisible, setNavVisible] = useState(true)
+  const pathname = usePathname()
+  const previousPathname = useRef(pathname)
 
   useEffect(() => {
     const savedTheme = window.localStorage.getItem('bloom-theme')
@@ -17,6 +20,40 @@ export default function Layout({ children, home }) {
     const initialTheme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : systemTheme
     setTheme(initialTheme)
     document.documentElement.dataset.theme = initialTheme
+  }, [])
+
+  useEffect(() => {
+    if (previousPathname.current !== pathname) {
+      window.scrollTo({ top: 0, behavior: 'auto' })
+      setNavVisible(true)
+      previousPathname.current = pathname
+    }
+  }, [pathname])
+
+  useEffect(() => {
+    let lastY = Math.max(window.scrollY, 0)
+    let upwardTravel = 0
+
+    const handleScroll = () => {
+      const currentY = Math.max(window.scrollY, 0)
+      const delta = currentY - lastY
+
+      if (currentY < 24) {
+        setNavVisible(true)
+        upwardTravel = 0
+      } else if (delta > 4) {
+        setNavVisible(false)
+        upwardTravel = 0
+      } else if (delta < 0) {
+        upwardTravel += Math.abs(delta)
+        if (upwardTravel >= 24) setNavVisible(true)
+      }
+
+      lastY = currentY
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const toggleTheme = () => {
@@ -33,42 +70,40 @@ export default function Layout({ children, home }) {
     </button>
   )
 
+  const brand = (
+    <div className={styles.headerBrand}>
+      <ViewTransition name="bloom-logo" share="bloom-logo-share" default="none">
+        <Link href="/" className={styles.logoLink} aria-label="Bloom Interactive home" transitionTypes={["bloom-navigation"]}>
+          <img src="/images/bloom-logo.png" className={styles.headerHomeImage} alt="" />
+        </Link>
+      </ViewTransition>
+      <ViewTransition name="bloom-wordmark" share="bloom-wordmark-share" default="none">
+        <Link href="/" className={styles.brandName} transitionTypes={["bloom-navigation"]}>{name}</Link>
+      </ViewTransition>
+      {home ? (
+        <nav className={styles.homeNav} aria-label="Main navigation">
+          <a href="#work">Work</a>
+          <Link href="/portfolio" transitionTypes={["bloom-navigation"]}>Portfolio</Link>
+          <a className={styles.navCta} href="#contact" onClick={(event) => {
+            event.preventDefault()
+            window.dispatchEvent(new Event('bloom:open-contact'))
+          }}>Contact</a>
+        </nav>
+      ) : (
+        <nav className={styles.homeNav} aria-label="Main navigation">
+          <Link href="/" transitionTypes={["bloom-navigation"]}>Home</Link>
+          <Link className={styles.navCta} href="/portfolio" transitionTypes={["bloom-navigation"]}>Portfolio</Link>
+          <Link href="/playground" transitionTypes={["bloom-navigation"]}>Playground</Link>
+        </nav>
+      )}
+    </div>
+  )
+
   return (
     <>
       <div className={`${styles.container} ${home ? '' : styles.innerPage}`}>
-        <header className={`${styles.header} ${home ? styles.homeHeader : ''}`}>
-          {home ? (
-            <div className={styles.headerBrand}>
-              <img
-                src="/images/bloom-logo.png"
-                className={styles.headerHomeImage}
-                alt={name}
-              />
-              <strong className={styles.brandName}>{name}</strong>
-              <nav className={styles.homeNav} aria-label="Main navigation">
-                <a href="#work">Work</a>
-                <Link href="/portfolio" transitionTypes={["bloom-navigation"]}>Portfolio</Link>
-                <a className={styles.navCta} href="#contact" onClick={(event) => {
-                  event.preventDefault()
-                  window.dispatchEvent(new Event('bloom:open-contact'))
-                }}>Contact</a>
-              </nav>
-            </div>
-          ) : (
-            <>
-              <Link href="/" transitionTypes={["bloom-navigation"]}>
-                <img
-                  src="/images/bloom-logo.png"
-                  className={styles.headerImage}
-                  alt={name}
-                />
-              </Link>
-              <h2 className={utilStyles.headingLg}>
-                <Link href="/" className={utilStyles.colorInherit} transitionTypes={["bloom-navigation"]}>{name}</Link>
-              </h2>
-              <Link href="/" transitionTypes={["bloom-navigation"]}>← Back to home</Link>
-            </>
-          )}
+        <header className={`${styles.header} ${styles.homeHeader} ${navVisible ? '' : styles.mobileNavHidden}`}>
+          {brand}
         </header>
         <main>{children}</main>
       </div>
