@@ -56,7 +56,10 @@ export default function Layout({ children, home }) {
               <nav className={styles.homeNav} aria-label="Main navigation">
                 <a href="#work">Work</a>
                 <Link href="/portfolio">Portfolio</Link>
-                <a className={styles.navCta} href="#contact">Contact</a>
+                <a className={styles.navCta} href="#contact" onClick={(event) => {
+                  event.preventDefault()
+                  window.dispatchEvent(new Event('bloom:open-contact'))
+                }}>Contact</a>
               </nav>
             </div>
           ) : (
