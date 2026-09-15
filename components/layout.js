@@ -1,12 +1,12 @@
+"use client";
+
 import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
-import Head from "next/head"
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 export const siteTitle = 'Bloom Interactive';
 const name = 'Bloom Interactive'
-const description = "Strategy, design, and engineering for founder-led companies."
 
 export default function Layout({ children, home }) {
   const [theme, setTheme] = useState('dark')
@@ -36,14 +36,6 @@ export default function Layout({ children, home }) {
   return (
     <>
       <div className={`${styles.container} ${home ? '' : styles.innerPage}`}>
-        <Head>
-          <link rel="icon" href="/images/bloom-logo.png" />
-          <meta name="description" content={description} />
-          <meta property="og:type" content="website" />
-          <meta name="og:title" content={siteTitle} />
-          <meta name="og:description" content={description} />
-          <meta property="og:image" content="/images/bloom-logo.png" />
-        </Head>
         <header className={`${styles.header} ${home ? styles.homeHeader : ''}`}>
           {home ? (
             <div className={styles.headerBrand}>
@@ -55,7 +47,7 @@ export default function Layout({ children, home }) {
               <strong className={styles.brandName}>{name}</strong>
               <nav className={styles.homeNav} aria-label="Main navigation">
                 <a href="#work">Work</a>
-                <Link href="/portfolio">Portfolio</Link>
+                <Link href="/portfolio" transitionTypes={["bloom-navigation"]}>Portfolio</Link>
                 <a className={styles.navCta} href="#contact" onClick={(event) => {
                   event.preventDefault()
                   window.dispatchEvent(new Event('bloom:open-contact'))
@@ -64,7 +56,7 @@ export default function Layout({ children, home }) {
             </div>
           ) : (
             <>
-              <Link href="/">
+              <Link href="/" transitionTypes={["bloom-navigation"]}>
                 <img
                   src="/images/bloom-logo.png"
                   className={styles.headerImage}
@@ -72,9 +64,9 @@ export default function Layout({ children, home }) {
                 />
               </Link>
               <h2 className={utilStyles.headingLg}>
-                <Link href="/" className={utilStyles.colorInherit}>{name}</Link>
+                <Link href="/" className={utilStyles.colorInherit} transitionTypes={["bloom-navigation"]}>{name}</Link>
               </h2>
-              <Link href="/">← Back to home</Link>
+              <Link href="/" transitionTypes={["bloom-navigation"]}>← Back to home</Link>
             </>
           )}
         </header>
@@ -89,8 +81,8 @@ export default function Layout({ children, home }) {
         <span className={styles.mountainLabel}>Made in Silverton, CO</span>
       </a>
       <nav className={styles.footerNav}>
-        <Link href="/portfolio">Portfolio</Link>
-        <Link href="/playground">Playground</Link>
+        <Link href="/portfolio" transitionTypes={["bloom-navigation"]}>Portfolio</Link>
+        <Link href="/playground" transitionTypes={["bloom-navigation"]}>Playground</Link>
         {themeToggle}
       </nav>
     </footer>

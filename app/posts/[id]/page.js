@@ -1,33 +1,36 @@
-import Head from "next/head"
 import Image from "next/image"
-import Link from "next/link";
-import { getAllPostIds, getPostData } from '../../lib/posts'
-import Date from '../../components/date'
-import Layout from '../../components/layout'
+import { getAllPostIds, getPostData } from '../../../lib/posts'
+import Date from '../../../components/date'
+import Layout from '../../../components/layout'
 
-import postStyles from '../../styles/post.module.css'
-import utilStyles from '../../styles/utils.module.css'
+import postStyles from '../../../styles/post.module.css'
+import utilStyles from '../../../styles/utils.module.css'
 
-export async function getStaticPaths() {
-  const paths = getAllPostIds()
-  return {
-    paths,
-    fallback: false
-  }
+export function generateStaticParams() {
+  return getAllPostIds().map(({ params }) => params)
 }
 
-export async function getStaticProps({ params }) {
-  const postData = await getPostData(params.id)
+export const dynamicParams = false
+
+export async function generateMetadata({ params }) {
+  const { id } = await params
+  const postData = await getPostData(id)
   return {
-    props: {
-      postData
-    }
+    title: postData.title,
+    description: postData.description,
+    openGraph: {
+      title: postData.title,
+      description: postData.description,
+      images: [postData.image],
+    },
   }
 }
 
 const FIXED_WIDTH = 520;
 
-export default function Post({ postData }) {
+export default async function Post({ params }) {
+  const { id } = await params
+  const postData = await getPostData(id)
   const correctionRatio = FIXED_WIDTH / postData.imageWidth;
 
   const embedSrc = postData.codepenEmbed
@@ -36,13 +39,6 @@ export default function Post({ postData }) {
 
   return (
     <Layout>
-      <Head>
-        <title>{postData.title}</title>
-        <meta name="description" content={postData.description} />
-        <meta name="og:title" content={postData.title} />
-        <meta name="og:description" content={postData.description} />
-        <meta property="og:image" content={postData.image} />
-      </Head>
       <article className={`${postStyles.article} ${postData.layout === 'stacked' ? postStyles.stacked : ''}`}>
         {embedSrc ? (
           <div className={postStyles.embedWrapper}>

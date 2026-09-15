@@ -41,6 +41,22 @@ html {
   scroll-behavior: smooth;
 }
 
+::view-transition-old(.bloom-page-exit) {
+  animation: 160ms ease-in both bloom-page-out;
+}
+
+::view-transition-new(.bloom-page-enter) {
+  animation: 240ms ease-out both bloom-page-in;
+}
+
+@keyframes bloom-page-out {
+  to { opacity: 0; }
+}
+
+@keyframes bloom-page-in {
+  from { opacity: 0; }
+}
+
 h1, h2, h3, h4, h5, h6 { font-family: inherit; }
 
 * {
@@ -507,6 +523,8 @@ pre code {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .contact-celebration { display: none; }
+  ::view-transition-old(.bloom-page-exit),
+  ::view-transition-new(.bloom-page-enter) { animation: none; }
 }
 .theme-home [class*="offers"] article {
   grid-template-columns: 65px 1fr;

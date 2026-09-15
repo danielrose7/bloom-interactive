@@ -1,9 +1,10 @@
-import Head from "next/head";
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import Layout, { siteTitle } from "../components/layout";
-import styles from "../styles/home.module.css";
+import Layout from "../layout";
+import styles from "../../styles/home.module.css";
 
 const problems = [
   ["Stuck at the start line", "Turn a validated idea and a long list of unknowns into a clear plan and a working first release."],
@@ -58,7 +59,6 @@ const offers = [
 
 export default function Home() {
   return <Layout home>
-    <Head><title>{`Build it better | ${siteTitle}`}</title><meta name="description" content="Daniel Rose helps founder-led companies build and ship better digital products." /></Head>
     <div className={`${styles.home} theme-home`}>
       <section className={styles.hero}>
         <div className={styles.sticker}><span>Accepting</span><strong>Projects</strong><small>Fall 2026</small></div>
@@ -78,7 +78,7 @@ export default function Home() {
         <article><strong>$15M+</strong><small>annual billing supported</small><h3>Private Prep</h3><p>Built and operated billing software and a custom CRM before serving as CTO.</p></article>
         <article><strong>$1M</strong><small>ARR journey</small><h3>Plantiful</h3><p>Joined the founding team before launch and helped build the product used by more than 50 client businesses.</p></article>
         <article><strong>0→1</strong><small>reliable AI delivery</small><h3>Applied AI</h3><p>Shipped reliable AI features that turn messy inputs into useful, structured workflows.</p></article>
-      </div><Link className={styles.inlineLink} href="/portfolio">See selected client work →</Link></section>
+      </div><Link className={styles.inlineLink} href="/portfolio" transitionTypes={["bloom-navigation"]}>See selected client work →</Link></section>
 
       <section className={styles.letter} aria-labelledby="letter-title">
         <div className={styles.letterLabel}><span>Letter from Dan</span><small>Silverton, Colorado<br />September 2026</small></div>

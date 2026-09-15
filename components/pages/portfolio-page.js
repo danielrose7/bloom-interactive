@@ -1,8 +1,9 @@
+"use client";
+
 import { useRef, useCallback } from "react";
-import Head from "next/head";
-import Layout, { siteTitle } from "../components/layout";
-import utilStyles from "../styles/utils.module.css";
-import styles from "../styles/portfolio.module.css";
+import Layout from "../layout";
+import utilStyles from "../../styles/utils.module.css";
+import styles from "../../styles/portfolio.module.css";
 
 const projects = [
   {
@@ -85,9 +86,6 @@ function ProjectItem({ name, tagline, description, url, image, clients, internal
 export default function Portfolio() {
   return (
     <Layout>
-      <Head>
-        <title>{`Portfolio | ${siteTitle}`}</title>
-      </Head>
       <section className={styles.portfolio}>
         <div className={styles.intro}>
           <h2 className={utilStyles.headingXl}>Portfolio</h2>

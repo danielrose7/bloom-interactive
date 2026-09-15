@@ -1,29 +1,20 @@
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import Layout, { siteTitle } from "../components/layout";
-import { getSortedPostsData } from "../lib/posts";
+import Layout from "../../components/layout";
+import { getSortedPostsData } from "../../lib/posts";
 
-import utilStyles from "../styles/utils.module.css";
-import playgroundStyles from "../styles/playground.module.css";
+import utilStyles from "../../styles/utils.module.css";
+import playgroundStyles from "../../styles/playground.module.css";
 
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
-  return {
-    props: {
-      allPostsData,
-    },
-  };
-}
+export const metadata = { title: "Playground | Bloom Interactive" };
 
 const FIXED_IMAGE_WIDTH = 340;
 
-export default function Playground({ allPostsData }) {
+export default function Playground() {
+  const allPostsData = getSortedPostsData();
+
   return (
     <Layout>
-      <Head>
-        <title>{`Playground | ${siteTitle}`}</title>
-      </Head>
       <section
         className={`${utilStyles.headingMd} ${utilStyles.centerPadding}`}
       >
@@ -46,7 +37,7 @@ export default function Playground({ allPostsData }) {
 
               return (
                 <li className={utilStyles.listItem} key={id}>
-                  <Link href={`/posts/${id}`} className={playgroundStyles.cardLink}>
+                  <Link href={`/posts/${id}`} className={playgroundStyles.cardLink} transitionTypes={["bloom-navigation"]}>
                     <Image
                       src={image}
                       alt={`Preview of ${title}`}
