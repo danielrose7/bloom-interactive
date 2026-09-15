@@ -275,7 +275,7 @@ pre code {
 }
 
 /* Keep the opening pitch compact without crowding the mobile layout. */
-.theme-home [class*="hero"] {
+.theme-home section[class*="hero"] {
   min-height: 620px;
   padding-top: 6rem;
   padding-bottom: 4.5rem;
@@ -442,13 +442,13 @@ pre code {
 }
 
 @media (max-width: 760px) {
-  .theme-home [class*="hero"] {
-    min-height: 0;
+  .theme-home section[class*="hero"] {
+    min-height: auto;
     padding-top: 6.5rem;
     padding-bottom: 4rem;
   }
 
-  .theme-home [class*="hero"] [class*="sticker"] {
+  .theme-home section[class*="hero"] [class*="sticker"] {
     top: 1.25rem;
     right: 0;
     width: auto;
@@ -463,44 +463,45 @@ pre code {
     transform: rotate(2deg);
   }
 
-  .theme-home [class*="hero"] [class*="sticker"] strong {
+  .theme-home section[class*="hero"] [class*="sticker"] strong {
     font-size: 0.7rem;
   }
 
-  .theme-home [class*="hero"] [class*="sticker"] small {
+  .theme-home section[class*="hero"] [class*="sticker"] small {
     margin: 0 0 0 0.25rem;
     padding: 0 0 0 0.6rem;
     border-top: 0;
     border-left: 1px solid currentColor;
   }
 
-  .theme-home [class*="hero"] [class*="kicker"] {
+  .theme-home section[class*="hero"] [class*="kicker"] {
     max-width: none;
     margin-bottom: 1.75rem;
     font-size: 0.68rem;
   }
 
-  .theme-home [class*="hero"] h1 {
+  .theme-home section[class*="hero"] h1 {
     max-width: 100%;
     font-size: clamp(3.35rem, 15.8vw, 5.5rem);
     line-height: 0.92;
     letter-spacing: -0.06em;
   }
 
-  .theme-home [class*="hero"] [class*="lede"] {
+  .theme-home section[class*="hero"] [class*="lede"] {
     margin-top: 2rem;
     font-size: clamp(1.08rem, 5.6vw, 1.35rem);
     line-height: 1.5;
   }
 
-  .theme-home [class*="hero"] button[class*="cta"] {
+  .theme-home section[class*="hero"] button[class*="cta"] {
     width: 100%;
   }
 
   .theme-home [class*="heroNote"] {
     position: static;
+    inset: auto;
     max-width: 280px;
-    margin-top: 2.75rem;
+    margin: 1.5rem 0 0;
   }
 
   .contact-copy-row {
@@ -513,6 +514,42 @@ pre code {
 
   .phone-popover {
     padding: 2.25rem 1.5rem;
+  }
+
+  .theme-home section[class*="letter"] {
+    gap: 1.25rem;
+  }
+
+  .theme-home [class*="letterBody"] {
+    padding: 0.25rem 0 0.25rem 1.25rem;
+    border: 0;
+    border-left: 3px solid var(--page-accent);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    color: var(--page-text);
+  }
+
+  .theme-home [class*="letterBody"] h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .theme-home [class*="letterBody"] p {
+    color: var(--page-muted);
+  }
+
+  :root[data-theme="light"] .theme-home [class*="letterBody"] {
+    border: 0;
+    border-left: 3px solid var(--page-accent);
+  }
+
+  .theme-home [class*="letterBody"] [class*="signature"] img {
+    filter: invert(1);
+    mix-blend-mode: normal;
+  }
+
+  :root[data-theme="light"] .theme-home [class*="letterBody"] [class*="signature"] img {
+    filter: none;
   }
 
   .contact-copy-email span {
@@ -544,10 +581,67 @@ pre code {
 
 @media (max-width: 760px) {
   .theme-home [class*="offers"] article {
-    grid-template-columns: 40px 1fr;
+    grid-template-columns: 32px 1fr;
+    gap: 0.75rem;
+    padding: 1.4rem 0;
   }
 
   .theme-home .offer-note {
     margin-left: 0;
+  }
+
+  .theme-home [class*="problemGrid"] {
+    gap: 0;
+    border-top: 1px solid var(--page-border);
+  }
+
+  .theme-home [class*="problemGrid"] article,
+  :root[data-theme="light"] .theme-home [class*="problemGrid"] article {
+    grid-template-columns: 32px 1fr;
+    gap: 0.75rem;
+    padding: 1.4rem 0;
+    border: 0;
+    border-bottom: 1px solid var(--page-border);
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .theme-home [class*="problemGrid"] p {
+    line-height: 1.55;
+  }
+
+  .theme-home [class*="metrics"],
+  .theme-home [class*="productGrid"] {
+    gap: 0;
+    border-top: 1px solid var(--page-border);
+  }
+
+  .theme-home [class*="metrics"] article,
+  :root[data-theme="light"] .theme-home #work [class*="metrics"] article {
+    min-height: 0;
+    padding: 1.5rem 0;
+    border: 0;
+    border-bottom: 1px solid var(--page-border);
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .theme-home [class*="metrics"] small {
+    min-height: 0;
+    padding-bottom: 1rem;
+  }
+
+  .theme-home [class*="productGrid"] > a,
+  :root[data-theme="light"] .theme-home [class*="productGrid"] > a[target="_blank"] {
+    padding: 1.5rem 0;
+    border: 0;
+    border-bottom: 1px solid var(--page-border);
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .theme-home [class*="productGrid"] [class*="productImage"] {
+    margin-bottom: 1rem;
+    border-radius: 8px;
   }
 }
