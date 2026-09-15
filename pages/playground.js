@@ -5,7 +5,7 @@ import Layout, { siteTitle } from "../components/layout";
 import { getSortedPostsData } from "../lib/posts";
 
 import utilStyles from "../styles/utils.module.css";
-import homeStyles from "../styles/home.module.css";
+import playgroundStyles from "../styles/playground.module.css";
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -22,7 +22,7 @@ export default function Playground({ allPostsData }) {
   return (
     <Layout>
       <Head>
-        <title>Playground | {siteTitle}</title>
+        <title>{`Playground | ${siteTitle}`}</title>
       </Head>
       <section
         className={`${utilStyles.headingMd} ${utilStyles.centerPadding}`}
@@ -38,7 +38,7 @@ export default function Playground({ allPostsData }) {
             to look at.
           </p>
         </div>
-        <ul className={homeStyles.gallery}>
+        <ul className={playgroundStyles.gallery}>
           {allPostsData.map(
             ({ id, title, image, imageWidth, imageHeight }, postIndex) => {
               const correctionRatio = FIXED_IMAGE_WIDTH / imageWidth;
@@ -46,7 +46,7 @@ export default function Playground({ allPostsData }) {
 
               return (
                 <li className={utilStyles.listItem} key={id}>
-                  <Link href={`/posts/${id}`} className={homeStyles.cardLink}>
+                  <Link href={`/posts/${id}`} className={playgroundStyles.cardLink}>
                     <Image
                       src={image}
                       alt={`Preview of ${title}`}
@@ -55,7 +55,7 @@ export default function Playground({ allPostsData }) {
                       style={{ objectFit: "cover" }}
                       priority={isPriority}
                     />
-                    <span className={homeStyles.cardLink__title}>
+                    <span className={playgroundStyles.cardLink__title}>
                       {title}
                     </span>
                   </Link>

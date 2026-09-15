@@ -1,23 +1,50 @@
+:root,
+:root[data-theme="dark"] {
+  --page-bg: #071b27;
+  --page-surface: #0d2938;
+  --page-surface-soft: #123444;
+  --page-text: #f7fbfd;
+  --page-muted: #a8bec9;
+  --page-faint: #7895a3;
+  --page-border: rgba(191, 229, 242, 0.2);
+  --page-accent: #58c9ec;
+  --page-accent-soft: #d9f4fc;
+  --page-link: #70d4f1;
+}
+
+:root[data-theme="light"] {
+  --page-bg: #f7fbfd;
+  --page-surface: #ffffff;
+  --page-surface-soft: #eaf7fb;
+  --page-text: #092132;
+  --page-muted: #526f7d;
+  --page-faint: #78909b;
+  --page-border: rgba(9, 65, 89, 0.16);
+  --page-accent: #66d0f9;
+  --page-accent-soft: #d9f4fc;
+  --page-link: #087ca9;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.6;
   font-size: 18px;
-  background-color: #fbfafb;
+  background-color: var(--page-bg);
+  color: var(--page-text);
+  transition: background-color 180ms ease, color 180ms ease;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-}
+h1, h2, h3, h4, h5, h6 { font-family: inherit; }
 
 * {
   box-sizing: border-box;
 }
 
 a {
-  color: #0070f3;
+  color: var(--page-link);
   text-decoration: none;
 }
 
@@ -46,4 +73,148 @@ code {
 
 pre code {
   white-space: pre-wrap;
+}
+
+.word-bank {
+  width: min(1100px, calc(100% - 64px));
+  margin: 0 auto;
+  padding: 3.5rem 0 5rem;
+  border-top: 1px solid var(--page-border);
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 5rem;
+  color: var(--page-text);
+}
+
+.word-bank h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.word-bank ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.word-bank li {
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--page-border);
+  border-radius: 999px;
+  color: var(--page-muted);
+  background: var(--page-surface);
+  font-size: 0.82rem;
+}
+
+.theme-home .cta-note {
+  width: 250px;
+  margin: 0.65rem 0 0;
+  color: var(--page-faint);
+  font-size: 0.72rem;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-align: center;
+}
+
+.theme-home button[class*="cta"] {
+  border: 0;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.phone-popover-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(3, 14, 21, 0.66);
+  backdrop-filter: blur(8px);
+}
+
+.phone-popover {
+  position: relative;
+  width: min(420px, 100%);
+  padding: 2.5rem;
+  border: 1px solid var(--page-border);
+  border-radius: 16px;
+  background: var(--page-bg);
+  color: var(--page-text);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.phone-popover p,
+.phone-popover small {
+  display: block;
+  margin: 0;
+  color: var(--page-muted) !important;
+}
+
+.phone-popover strong {
+  display: block;
+  margin: 0.65rem 0;
+  color: var(--page-text);
+  font-size: clamp(1.8rem, 7vw, 2.6rem);
+  letter-spacing: -0.04em;
+}
+
+.phone-popover-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.9rem;
+  border: 0;
+  background: transparent;
+  color: var(--page-muted);
+  font: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* The homepage is authored with dark-theme tokens; these map it cleanly to light. */
+:root[data-theme="light"] .theme-home {
+  --ink: var(--page-bg);
+  --paper: var(--page-text);
+  --accent: var(--page-accent);
+  --accent-soft: #d9f4fc;
+  --blue: var(--page-accent);
+  --line: var(--page-border);
+  background: var(--page-bg);
+  color: var(--page-text);
+}
+
+:root[data-theme="light"] .theme-home p { color: var(--page-muted); }
+:root[data-theme="light"] .theme-home article { background-color: var(--page-surface); }
+:root[data-theme="light"] .theme-home #work { color: #f7fbfd; }
+:root[data-theme="light"] .theme-home #work p { color: #a8bec9; }
+:root[data-theme="light"] .theme-home a[target="_blank"] { color: var(--page-text); background: var(--page-surface); }
+:root[data-theme="light"] .theme-home [class*="letterBody"] {
+  border: 1px solid var(--page-border);
+  background: transparent;
+  box-shadow: none;
+}
+:root[data-theme="light"] .theme-home [class*="letterBody"] p {
+  color: var(--page-text);
+}
+:root[data-theme="light"] .theme-home [class*="letterBody"] [class*="signature"] {
+  color: #0f87b2;
+}
+:root[data-theme="light"] .theme-home [class*="metrics"] strong {
+  color: #1598c8;
+}
+
+@media (max-width: 760px) {
+  .word-bank {
+    width: calc(100% - 32px);
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 3.5rem 0;
+  }
 }

@@ -10,22 +10,22 @@
 }
 
 .intro p {
-  color: #666;
+  color: var(--page-muted);
   font-size: 1.1rem;
 }
 
 .asterisk {
-  color: #999;
+  color: var(--page-faint);
   text-decoration: none;
 }
 
 .asterisk:hover {
-  color: #666;
+  color: var(--page-text);
 }
 
 .disclaimer {
   font-size: 0.85rem;
-  color: #999;
+  color: var(--page-faint);
   margin-top: 4rem;
   padding-top: 1rem;
   display: inline-block;
@@ -48,11 +48,11 @@
 
 .project {
   position: relative;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-top: 1px solid var(--page-border);
 }
 
 .project:last-child {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid var(--page-border);
 }
 
 .projectLink {
@@ -90,7 +90,7 @@
 }
 
 .projectDescription {
-  color: #666;
+  color: var(--page-muted);
   font-size: 0.95rem;
   line-height: 1.5;
   margin: 0.75rem 0 0;
@@ -98,7 +98,7 @@
 }
 
 .projectTagline {
-  color: #999;
+  color: var(--page-faint);
   font-size: 1rem;
   white-space: nowrap;
   flex-shrink: 0;
@@ -107,7 +107,7 @@
 }
 
 .projectLink:hover .projectTagline {
-  color: #666;
+  color: var(--page-text);
 }
 
 /* Hover image preview */
@@ -141,7 +141,7 @@
   transform: translateX(-8px);
   transition: opacity 200ms ease, transform 200ms ease;
   margin-left: 0.5rem;
-  color: #999;
+  color: var(--page-accent);
 }
 
 .projectLink:hover .arrow {
@@ -153,11 +153,11 @@
 .cta {
   margin-top: 4rem;
   padding: 3rem 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-top: 1px solid var(--page-border);
 }
 
 .cta p {
-  color: #666;
+  color: var(--page-muted);
   font-size: 1.1rem;
   margin: 0 0 0.75rem;
 }

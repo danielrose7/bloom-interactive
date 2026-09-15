@@ -6,6 +6,13 @@ import styles from "../styles/portfolio.module.css";
 
 const projects = [
   {
+    name: "Plantiful",
+    tagline: "Pre-launch to $1M ARR",
+    description:
+      "Plant-specific ERP for inventory, production, ordering, reporting, and AI-assisted workflows. I joined pre-launch as one of three founding engineers.",
+    url: "https://plantiful.ai",
+  },
+  {
     name: "Tote",
     tagline: "A cart that doesn't belong to a store",
     description:
@@ -48,7 +55,7 @@ const projects = [
   },
 ];
 
-function ProjectItem({ name, tagline, description, url, image, clients }) {
+function ProjectItem({ name, tagline, description, url, image, clients, internal }) {
   const previewRef = useRef(null);
 
   const handleMouseMove = useCallback((e) => {
@@ -60,12 +67,7 @@ function ProjectItem({ name, tagline, description, url, image, clients }) {
 
   return (
     <li className={styles.project} onMouseMove={handleMouseMove}>
-      <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.projectLink}
-      >
+      <a href={url} target={internal ? undefined : "_blank"} rel={internal ? undefined : "noopener noreferrer"} className={styles.projectLink}>
         <div className={styles.projectInfo}>
           <h2 className={styles.projectName}>
             {name}
@@ -75,9 +77,7 @@ function ProjectItem({ name, tagline, description, url, image, clients }) {
         </div>
         <span className={styles.projectTagline}>{tagline}</span>
       </a>
-      <div className={styles.imagePreview} ref={previewRef}>
-        <img src={image} alt={`${name} preview`} />
-      </div>
+      {image && <div className={styles.imagePreview} ref={previewRef}><img src={image} alt={`${name} preview`} /></div>}
     </li>
   );
 }
@@ -86,7 +86,7 @@ export default function Portfolio() {
   return (
     <Layout>
       <Head>
-        <title>Portfolio | {siteTitle}</title>
+        <title>{`Portfolio | ${siteTitle}`}</title>
       </Head>
       <section className={styles.portfolio}>
         <div className={styles.intro}>
