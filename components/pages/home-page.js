@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import Layout from "../layout";
+import { ContactTrigger } from "../contact-popover";
 import styles from "../../styles/home.module.css";
 
 const problems = [
@@ -13,44 +13,6 @@ const problems = [
   ["Putting AI into production", "Move past the demo with reliable workflows, structured data, and useful product design."],
 ];
 
-function PhonePopover({ listenForContact = false }) {
-  const [open, setOpen] = useState(false);
-  const [copied, setCopied] = useState("");
-
-  useEffect(() => {
-    if (!listenForContact) return undefined;
-    const openContact = () => {
-      setCopied("");
-      setOpen(true);
-    };
-    window.addEventListener("bloom:open-contact", openContact);
-    return () => window.removeEventListener("bloom:open-contact", openContact);
-  }, [listenForContact]);
-
-  async function copyContact(value, label) {
-    await navigator.clipboard.writeText(value);
-    setCopied(label);
-    window.setTimeout(() => setCopied(""), 1800);
-  }
-
-  return <>
-    <button className={styles.cta} type="button" onClick={() => { setCopied(""); setOpen(true); }}>Text Daniel <span>↗</span></button>
-    {open && <div className="phone-popover-backdrop" role="presentation" onClick={() => setOpen(false)}>
-      <div className="contact-celebration" aria-hidden="true">{Array.from({ length: 18 }, (_, index) => <i key={index} />)}</div>
-      <div className="phone-popover" role="dialog" aria-modal="true" aria-labelledby="phone-popover-title" onClick={(event) => event.stopPropagation()}>
-        <button className="phone-popover-close" type="button" aria-label="Close" onClick={() => setOpen(false)}>×</button>
-        <p className="phone-popover-kicker">Direct line</p>
-        <h2 id="phone-popover-title">Tag Dan in.</h2>
-        <p className="phone-popover-intro">A quick note is all it takes.</p>
-        <div className="contact-copy-list">
-          <div className="contact-copy-row"><div><small>Text</small><strong>720-878-4015</strong></div><button type="button" onClick={() => copyContact("720-878-4015", "number")}>{copied === "number" ? "Copied" : "Copy"}<span aria-hidden="true">{copied === "number" ? "✓" : "↗"}</span></button></div>
-          <div className="contact-copy-row contact-copy-email"><div><small>Email</small><span>dan@gobloom.io</span></div><button type="button" onClick={() => copyContact("dan@gobloom.io", "email")}>{copied === "email" ? "Copied" : "Copy"}<span aria-hidden="true">{copied === "email" ? "✓" : "↗"}</span></button></div>
-        </div>
-        <small className="phone-popover-signoff">Move the needle. Save the day.</small>
-      </div>
-    </div>}
-  </>;
-}
 const offers = [
   ["Focused Sprint", "A senior builder dropped into one urgent, well-defined problem. Best for shipping a feature, stabilizing a launch, or clearing a technical bottleneck."],
   ["Embedded Capacity", "Add experienced product and engineering capacity without making a full-time hire. I work directly in your codebase and alongside your team."],
@@ -65,7 +27,7 @@ export default function Home() {
         <p className={styles.kicker}>Independent product studio</p>
         <h1>Build it better.<br />Build it faster.</h1>
         <p className={styles.lede}>Are you running against deadlines or struggling to get off the start line?</p>
-        <PhonePopover listenForContact />
+        <ContactTrigger className={styles.cta} />
         <p className="cta-note">Move the needle. Tag Dan in.</p>
         <p className={styles.heroNote}>Strategy, design, and engineering—from one accountable senior builder.</p>
       </section>
@@ -109,7 +71,7 @@ export default function Home() {
         <li>Independent product engineer</li><li>Software development consultant</li><li>Senior full-stack developer</li><li>Principal software engineer</li><li>Staff software engineer</li><li>Fractional principal engineer</li><li>Contract staff engineer</li><li>Fractional founding engineer</li><li>Hands-on fractional CTO</li><li>MVP developer</li><li>Startup technical partner</li><li>Product development studio</li><li>AI application developer</li><li>Software rescue consultant</li>
       </ul></section>
 
-      <section className={styles.contact} id="contact"><p className={styles.kicker}>Accepting a small number of projects</p><h2>What are you trying to get over the line?</h2><p>Save the day. We’ll figure out whether I’m the right person to help.</p><PhonePopover /><a className={styles.email} href="mailto:dan@gobloom.io">dan@gobloom.io</a></section>
+      <section className={styles.contact} id="contact"><p className={styles.kicker}>Accepting a small number of projects</p><h2>What are you trying to get over the line?</h2><p>Save the day. We’ll figure out whether I’m the right person to help.</p><ContactTrigger className={styles.cta} /><a className={styles.email} href="mailto:dan@gobloom.io">dan@gobloom.io</a></section>
     </div>
   </Layout>;
 }

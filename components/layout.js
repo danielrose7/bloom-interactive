@@ -4,6 +4,7 @@ import styles from './layout.module.css'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState, ViewTransition } from 'react'
+import ContactPopover from './contact-popover'
 
 export const siteTitle = 'Bloom Interactive';
 const name = 'Bloom Interactive'
@@ -91,9 +92,12 @@ export default function Layout({ children, home }) {
         </nav>
       ) : (
         <nav className={styles.homeNav} aria-label="Main navigation">
-          <Link href="/" transitionTypes={["bloom-navigation"]}>Home</Link>
-          <Link className={styles.navCta} href="/portfolio" transitionTypes={["bloom-navigation"]}>Portfolio</Link>
+          <Link href="/portfolio" transitionTypes={["bloom-navigation"]}>Portfolio</Link>
           <Link href="/playground" transitionTypes={["bloom-navigation"]}>Playground</Link>
+          <a className={styles.navCta} href="/#contact" onClick={(event) => {
+            event.preventDefault()
+            window.dispatchEvent(new Event('bloom:open-contact'))
+          }}>Contact</a>
         </nav>
       )}
     </div>
@@ -121,6 +125,7 @@ export default function Layout({ children, home }) {
         {themeToggle}
       </nav>
     </footer>
+    <ContactPopover />
     </>
   )
 }
