@@ -7,34 +7,34 @@ import styles from "../../styles/portfolio.module.css";
 
 const projects = [
   {
-    name: "Plantiful",
+    name: "Vertical SaaS",
     tagline: "Pre-launch to $1M ARR",
     description:
-      "Plant-specific ERP for inventory, production, ordering, reporting, and AI-assisted workflows. I joined pre-launch as one of three founding engineers.",
+      "Plantiful.ai is a plant-specific ERP for inventory, production, ordering, reporting, and AI-assisted workflows. I joined pre-launch as one of three founding engineers.",
     url: "https://plantiful.ai",
     image: "/images/portfolio/plantiful.png",
   },
   {
-    name: "Goji",
-    tagline: "Practice management, rooted in TCM",
+    name: "Patient scheduling platform",
+    tagline: "Scheduling, intake, charting, and billing",
     description:
-      "TCM-native charting and practice management for independent acupuncturists and small clinics.",
+      "Goji combines online scheduling, custom patient intake, rich-text clinical charting, billing and invoicing, and patient portals for acupuncturists and small clinics.",
     url: "https://goji.health/",
     image: "/images/portfolio/goji.png",
   },
   {
-    name: "Tote",
-    tagline: "A cart that doesn't belong to a store",
+    name: "Product-saving app",
+    tagline: "Available on iOS and the Chrome Web Store",
     description:
-      "A universal product-saving tool with a Chrome extension. Save items from any store, organize into collections, track prices, and share wishlists. Privacy-first — no tracking, no ads.",
+      "Tote is a universal product-saving app and Chrome extension. Save items from any store, organize collections, track prices, and share wishlists. Privacy-first — no tracking, no ads.",
     url: "https://tote.tools/",
     image: "/images/portfolio/tote.png",
   },
   {
-    name: "Citrus Surf",
+    name: "Data toolkit",
     tagline: "Browser-based data tools",
     description:
-      "A toolkit for converting messy spreadsheets and JSON into SQL, transforming between data formats, and generating IDs. All processing happens client-side — your data never leaves the browser.",
+      "Citrus Surf converts messy spreadsheets and JSON into SQL, transforms data between formats, and generates IDs. Everything happens client-side — your data never leaves the browser.",
     url: "https://www.citrus.surf/",
     image: "/images/portfolio/citrus.png",
   },
