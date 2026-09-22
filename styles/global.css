@@ -148,6 +148,22 @@ pre code {
   text-align: center;
 }
 
+.theme-home .hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.theme-home .resume-link {
+  color: var(--page-ink);
+  font-size: 0.9rem;
+  font-weight: 750;
+}
+
+.theme-home .resume-link span {
+  margin-left: 0.35rem;
+}
+
 .theme-home button[class*="cta"] {
   border: 0;
   font-family: inherit;

@@ -17,6 +17,7 @@ const offers = [
   ["Focused Sprint", "A senior builder dropped into one urgent, well-defined problem. Best for shipping a feature, stabilizing a launch, or clearing a technical bottleneck."],
   ["Embedded Capacity", "Add experienced product and engineering capacity without making a full-time hire. I work directly in your codebase and alongside your team."],
   ["Technical Leadership", "Senior technical judgment for teams navigating architecture, hiring, delivery, or a consequential new product bet."],
+  ["Full-Time Doer", "Bring on a principal-level engineer and former CTO who can own consequential product and technical work for the long haul."],
 ];
 
 export default function Home() {
@@ -24,15 +25,18 @@ export default function Home() {
     <div className={`${styles.home} theme-home`}>
       <section className={styles.hero}>
         <div className={styles.sticker}><span>Accepting</span><strong>Projects</strong><small>Fall 2026</small></div>
-        <p className={styles.kicker}>Independent product studio</p>
+        <p className={styles.kicker}>Principal full stack developer + CTO</p>
         <h1>Build it better.<br />Build it faster.</h1>
         <p className={styles.lede}>Are you running against deadlines or struggling to get off the start line?</p>
-        <ContactTrigger className={styles.cta} />
+        <div className="hero-actions">
+          <ContactTrigger className={styles.cta} />
+          <a className="resume-link" href="/daniel-rose-resume.pdf" target="_blank" rel="noreferrer">Résumé <span>↗</span></a>
+        </div>
         <p className="cta-note">Move the needle. Tag Dan in.</p>
         <p className={styles.heroNote}>Strategy, design, and engineering—from one accountable senior builder.</p>
       </section>
 
-      <section className={styles.intro}><p className={styles.kicker}>A small studio with senior hands</p><div><h2>A career of delivering things on time and above expectations.</h2><p>Daniel has built brands, apps, and websites; owned infrastructure supporting more than $15 million in annual billing; and joined a pre-launch company on its path from idea to $1 million in ARR.</p><p className={styles.punchline}>He has sold logos, too.</p></div></section>
+      <section className={styles.intro}><p className={styles.kicker}>GSD; Smile</p><div><h2>A career of delivering things on time and above expectations.</h2><p>Daniel has built brands, apps, and websites; owned infrastructure supporting more than $15 million in annual billing; and joined a pre-launch company on its path from idea to $1 million in ARR.</p><p className={styles.punchline}>He has sold logos, too.</p></div></section>
 
       <section className={styles.section}><header><p className={styles.kicker}>Good reasons to call</p><h2>Your product has momentum—or needs some.</h2></header><div className={styles.problemGrid}>{problems.map(([title,copy],i)=><article key={title}><span>0{i+1}</span><h3>{title}</h3><p>{copy}</p></article>)}</div></section>
 
@@ -40,7 +44,7 @@ export default function Home() {
         <article><strong>$15M+</strong><small>annual billing supported</small><h3>Private Prep</h3><p>Built and operated billing software and a custom CRM before serving as CTO.</p></article>
         <article><strong>$1M</strong><small>ARR journey</small><h3>Plantiful</h3><p>Joined the founding team before launch and helped build the product used by more than 50 client businesses.</p></article>
         <article><strong>0→1</strong><small>reliable AI delivery</small><h3>Applied AI</h3><p>Shipped reliable AI features that turn messy inputs into useful, structured workflows.</p></article>
-      </div><Link className={styles.inlineLink} href="/portfolio" transitionTypes={["bloom-navigation"]}>See selected client work →</Link></section>
+      </div><Link className={styles.inlineLink} href="/portfolio" transitionTypes={["bloom-navigation"]}>See selected work →</Link></section>
 
       <section className={styles.letter} aria-labelledby="letter-title">
         <div className={styles.letterLabel}><span>Letter from Dan</span></div>
@@ -60,10 +64,10 @@ export default function Home() {
 
       <section className={styles.section}><header><p className={styles.kicker}>Ways to work together</p><h2>Start with the shape of support the problem deserves.</h2></header><div className={styles.offers}>{offers.map(([title,copy],i)=><article key={title}><span>0{i+1}</span><div><h3>{title}</h3><p>{copy}</p></div></article>)}</div><p className="offer-note">Engagements are scoped around outcomes and typically begin with a short working session.</p></section>
 
-      <section className={styles.products}><header><p className={styles.kicker}>Products from Bloom</p><h2>Client work is only half the story.</h2></header><div className={styles.productGrid}>
+      <section className={styles.products}><header><p className={styles.kicker}>Building better buttons</p><h2>Products and platforms in my portfolio.</h2></header><div className={styles.productGrid}>
         <a href="https://tote.tools/" target="_blank" rel="noreferrer"><div className={styles.productImage}><Image src="/images/portfolio/tote.png" alt="Tote universal shopping cart shown alongside its browser extension" fill sizes="50vw" /></div><div className={styles.productMeta}><h3>Tote ↗</h3><ul className={styles.platforms} aria-label="Available on the web, as a Chrome extension, and in the iOS App Store"><li>Web app</li><li>Chrome extension</li><li>iOS App Store</li></ul></div><p>A privacy-first universal cart for saving products from any store.</p></a>
         <a href="https://goji.health/" target="_blank" rel="noreferrer"><div className={styles.productImage}><Image src="/images/portfolio/goji.png" alt="Goji acupuncture practice management homepage" fill sizes="50vw" /></div><div className={styles.productMeta}><h3>Goji ↗</h3><span className={styles.caseStudy}>Case study</span></div><p>TCM-native charting and practice management for independent acupuncturists and small clinics.</p></a>
-      </div></section>
+      </div><Link className={styles.inlineLink} href="/portfolio" transitionTypes={["bloom-navigation"]}>See selected work →</Link></section>
 
       <section className={styles.about}><div><p className={styles.kicker}>Daniel Rose</p><h2>You work with the person doing the work.</h2><p>I’m a product-minded engineer and former CTO based in Silverton, Colorado. I work directly in your codebase, alongside your team, and leave behind tested systems and documented decisions—not a dependency.</p><p>I’m especially useful to founder-led companies with customers, funding, or validated demand.</p><p><a href="https://www.linkedin.com/in/daniel-rose-11a91b70/">LinkedIn ↗</a> <a href="https://github.com/danielrose7">GitHub ↗</a></p></div><div className={styles.portrait}><Image src="/images/profile.png" alt="Daniel Rose" fill sizes="40vw" /></div></section>
 
