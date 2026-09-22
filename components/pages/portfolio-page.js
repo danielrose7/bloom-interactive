@@ -12,6 +12,15 @@ const projects = [
     description:
       "Plant-specific ERP for inventory, production, ordering, reporting, and AI-assisted workflows. I joined pre-launch as one of three founding engineers.",
     url: "https://plantiful.ai",
+    image: "/images/portfolio/plantiful.png",
+  },
+  {
+    name: "Goji",
+    tagline: "Practice management, rooted in TCM",
+    description:
+      "TCM-native charting and practice management for independent acupuncturists and small clinics.",
+    url: "https://goji.health/",
+    image: "/images/portfolio/goji.png",
   },
   {
     name: "Tote",

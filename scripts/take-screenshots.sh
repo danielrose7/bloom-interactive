@@ -15,7 +15,8 @@ screenshot() {
     "$url" 2>/dev/null
 }
 
-screenshot "citrus" "https://www.citrus.surf/"
+screenshot "plantiful" "https://plantiful.ai/"
+screenshot "goji" "https://goji.health/"
 screenshot "tote" "https://tote.tools/"
 screenshot "arborbridge" "https://www.arborbridge.com/"
 screenshot "tcs-classes" "https://www.thecodingspace.com/classes"

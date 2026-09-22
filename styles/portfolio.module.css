@@ -171,6 +171,13 @@
   padding: 0 0.1em;
 }
 
+:global(:root[data-theme="dark"]) .cta p em {
+  color: #071b27;
+  background-size: 100% 100%;
+  background-position: 0 100%;
+  border-radius: 0.08em;
+}
+
 .ctaLink {
   font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 2rem;
