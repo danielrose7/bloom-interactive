@@ -6,6 +6,8 @@ import Layout from "../layout";
 import { ContactTrigger } from "../contact-popover";
 import styles from "../../styles/home.module.css";
 
+const resumeDate = "2026-09-21";
+
 const problems = [
   ["Stuck at the start line", "Turn a validated idea and a long list of unknowns into a clear plan and a working first release."],
   ["Running against a deadline", "Add senior, hands-on capacity without months of hiring and onboarding."],
@@ -30,7 +32,7 @@ export default function Home() {
         <p className={styles.lede}>Are you running against deadlines or struggling to get off the start line?</p>
         <div className="hero-actions">
           <ContactTrigger className={styles.cta} />
-          <a className="resume-link" href="/daniel-rose-resume.pdf" target="_blank" rel="noreferrer">Résumé <span>↗</span></a>
+          <a className="resume-link" href="/daniel-rose-resume.pdf" download={`Daniel-Rose-Resume-${resumeDate}.pdf`}>Resume <span>↓</span></a>
         </div>
         <p className="cta-note">Move the needle. Tag Dan in.</p>
         <p className={styles.heroNote}>Strategy, design, and engineering—from one accountable senior builder.</p>
