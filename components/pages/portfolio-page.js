@@ -56,10 +56,10 @@ const projects = [
     image: "/images/portfolio/tcs-classes.png",
   },
   {
-    name: "Online storefront",
-    tagline: "Local print shop with six locations",
+    name: "Custom e-commerce",
+    tagline: "Retail and custom-print orders in one storefront",
     description:
-      "Custom e-commerce site for a Colorado screen printing company with six locations. Includes custom order forms with Dropbox upload, inventory management via InkSoft integration, and a full product catalog.",
+      "Built a custom storefront for Lab Seven, a Colorado screen-printing studio. The site combines a full product catalog, custom-order workflows with file uploads, and inventory integration through InkSoft.",
     url: "https://www.labseven.co/",
     image: "/images/portfolio/labseven.png",
   },
