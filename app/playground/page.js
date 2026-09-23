@@ -6,7 +6,19 @@ import { getSortedPostsData } from "../../lib/posts";
 import utilStyles from "../../styles/utils.module.css";
 import playgroundStyles from "../../styles/playground.module.css";
 
-export const metadata = { title: "Playground | Bloom Interactive" };
+export const metadata = {
+  title: "Playground",
+  description: "Experiments, interactions, and small ideas made real by Daniel Rose.",
+  openGraph: {
+    title: "Small ideas, made real.",
+    description: "Experiments, interactions, and small ideas made real by Daniel Rose.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Small ideas, made real.",
+    description: "Experiments, interactions, and small ideas made real by Daniel Rose.",
+  },
+};
 
 const FIXED_IMAGE_WIDTH = 340;
 

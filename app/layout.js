@@ -11,9 +11,14 @@ export const metadata = {
   icons: { icon: "/images/bloom-logo.png" },
   openGraph: {
     type: "website",
+    siteName: "Bloom Interactive",
     title: "Bloom Interactive",
     description: "Strategy, design, and engineering for founder-led companies.",
-    images: ["/images/bloom-logo.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bloom Interactive",
+    description: "Strategy, design, and engineering for founder-led companies.",
   },
 };
 

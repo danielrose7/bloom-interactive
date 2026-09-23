@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "og:generate": "node scripts/generate-og-images.mjs",
     "start": "next start"
   },
   "dependencies": {
