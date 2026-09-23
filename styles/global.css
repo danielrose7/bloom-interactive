@@ -155,9 +155,14 @@ pre code {
 }
 
 .theme-home .resume-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
   color: var(--page-ink);
   font-size: 0.9rem;
   font-weight: 750;
+  white-space: nowrap;
 }
 
 .theme-home .resume-link span {
@@ -266,15 +271,17 @@ pre code {
 }
 
 .theme-home [class*="letterBody"] [class*="signature"] {
-  width: min(420px, 100%);
+  width: min(340px, 100%);
   margin-top: 1rem;
 }
 
-.theme-home [class*="letterBody"] [class*="signature"] img {
+.theme-home .signature-mark {
   display: block;
   width: 100%;
-  height: auto;
-  mix-blend-mode: multiply;
+  aspect-ratio: 904 / 286;
+  background: currentColor;
+  -webkit-mask: url("/images/daniel-rose-signature.svg") center / contain no-repeat;
+  mask: url("/images/daniel-rose-signature.svg") center / contain no-repeat;
 }
 :root[data-theme="light"] .theme-home [class*="metrics"] strong {
   color: #1598c8;
@@ -543,6 +550,31 @@ pre code {
 
   .theme-home section[class*="hero"] button[class*="cta"] {
     width: 100%;
+    justify-content: center;
+  }
+
+  .theme-home .hero-actions {
+    display: grid;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .theme-home .resume-link {
+    width: 100%;
+    min-height: 52px;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    color: var(--paper);
+  }
+
+  .theme-home .resume-link:hover {
+    background: rgba(255, 255, 255, 0.04);
+    text-decoration: none;
+  }
+
+  .theme-home .cta-note {
+    width: 100%;
+    margin-top: 0.75rem;
   }
 
   .theme-home [class*="heroNote"] {
@@ -606,15 +638,7 @@ pre code {
 
   .theme-home [class*="letterBody"] [class*="signature"] {
     width: min(280px, 85%);
-  }
-
-  .theme-home [class*="letterBody"] [class*="signature"] img {
-    filter: invert(1);
-    mix-blend-mode: normal;
-  }
-
-  :root[data-theme="light"] .theme-home [class*="letterBody"] [class*="signature"] img {
-    filter: none;
+    color: var(--page-accent);
   }
 
   .contact-copy-email span {

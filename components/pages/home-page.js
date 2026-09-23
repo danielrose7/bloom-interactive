@@ -32,7 +32,7 @@ export default function Home() {
         <p className={styles.lede}>Are you running against deadlines or struggling to get off the start line?</p>
         <div className="hero-actions">
           <ContactTrigger className={styles.cta} />
-          <a className="resume-link" href="/daniel-rose-resume.pdf" download={`Daniel-Rose-Resume-${resumeDate}.pdf`}>Resume <span>↓</span></a>
+          <a className="resume-link" href="/daniel-rose-resume.pdf" download={`Daniel-Rose-Resume-${resumeDate}.pdf`}>Download resume <span aria-hidden="true">↓</span></a>
         </div>
         <p className="cta-note">Move the needle. Tag Dan in.</p>
         <p className={styles.heroNote}>Strategy, design, and engineering—from one accountable senior builder.</p>
@@ -58,7 +58,7 @@ export default function Home() {
           <p>I’m anticipating your note and know together we’ll build something great.</p>
           <p>Upwards,</p>
           <div className={styles.signature}>
-            <Image src="/images/daniel-rose-signature.png" alt="Daniel Rose" width={904} height={286} />
+            <span className="signature-mark" role="img" aria-label="Daniel Rose signature" />
           </div>
           <p><small>*Or at least figure out how to, quickly.</small></p>
         </div>
