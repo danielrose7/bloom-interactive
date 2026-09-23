@@ -10,12 +10,12 @@ export const metadata = {
   title: "Playground",
   description: "Experiments, interactions, and small ideas made real by Daniel Rose.",
   openGraph: {
-    title: "Small ideas, made real.",
+    title: "Playground — Tiny, joy-filled projects.",
     description: "Experiments, interactions, and small ideas made real by Daniel Rose.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Small ideas, made real.",
+    title: "Playground — Tiny, joy-filled projects.",
     description: "Experiments, interactions, and small ideas made real by Daniel Rose.",
   },
 };

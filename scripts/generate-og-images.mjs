@@ -26,14 +26,17 @@ const CARDS = [
   {
     dir: "app/portfolio",
     eyebrow: "Selected work",
-    headline: "Proof, not [[promises.]]",
-    alt: "Daniel Rose at Bloom Interactive — selected work. Proof, not promises.",
+    headline: "If it’s on the internet,\nwe can [[build it]][[*]]",
+    footnote: "*Or at least figure out how to, quickly.",
+    alt: "Daniel Rose at Bloom Interactive — If it’s on the internet, we can build it. Or at least figure out how to, quickly.",
   },
   {
     dir: "app/playground",
     eyebrow: "Building better buttons",
-    headline: "Small ideas, [[made real.]]",
-    alt: "Daniel Rose at Bloom Interactive — playground. Small ideas, made real.",
+    headline: "Playground",
+    subheadline: "Tiny, joy-filled projects.",
+    footnote: "Most of my recent work is private.",
+    alt: "Daniel Rose at Bloom Interactive — Playground. Tiny, joy-filled projects. Most of my recent work is private.",
   },
 ];
 
@@ -44,6 +47,7 @@ const escapeHtml = (value) => value
 
 function headlineHtml(headline) {
   return escapeHtml(headline)
+    .replace(/\[\[\*\]\]/g, '<sup>*</sup>')
     .replace(/\[\[(.+?)\]\]/g, '<span class="accent">$1</span>')
     .replaceAll("\n", "<br>");
 }
@@ -126,12 +130,17 @@ function cardHtml(card) {
       letter-spacing: -.06em;
     }
     .accent { color: #58c9ec; }
+    sup { position: relative; top: -.45em; margin-left: .08em; font-size: .38em; color: #58c9ec; }
+    .subheadline { position: absolute; left: 64px; top: 385px; color: #58c9ec; font-size: 48px; font-weight: 750; letter-spacing: -.035em; }
+    .footnote { position: absolute; left: 64px; bottom: 62px; color: #7895a3; font-size: 17px; font-weight: 600; }
     .rule { position: absolute; left: 64px; right: 64px; bottom: 44px; height: 1px; background: rgba(191,229,242,.2); }
   </style></head><body>
     <div class="ghost"></div>
     <header><img class="logo" src="${LOGO}"><span class="wordmark">Daniel Rose <span class="brand-separator">·</span> Bloom Interactive</span><span class="domain">gobloom.io</span></header>
     <div class="eyebrow">${escapeHtml(card.eyebrow)}</div>
     <h1>${headlineHtml(card.headline)}</h1>
+    ${card.subheadline ? `<div class="subheadline">${escapeHtml(card.subheadline)}</div>` : ""}
+    ${card.footnote ? `<div class="footnote">${escapeHtml(card.footnote)}</div>` : ""}
     <div class="rule"></div>
   </body></html>`;
 }

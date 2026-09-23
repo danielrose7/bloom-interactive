@@ -4,12 +4,12 @@ export const metadata = {
   title: "Portfolio",
   description: "Selected product, design, and engineering work by Daniel Rose.",
   openGraph: {
-    title: "Proof, not promises.",
+    title: "If it’s on the internet, we can build it*",
     description: "Selected product, design, and engineering work by Daniel Rose.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Proof, not promises.",
+    title: "If it’s on the internet, we can build it*",
     description: "Selected product, design, and engineering work by Daniel Rose.",
   },
 };
