@@ -85,6 +85,7 @@ export default function Layout({ children, home }) {
         <nav className={styles.homeNav} aria-label="Main navigation">
           <a href="#work">Work</a>
           <Link href="/portfolio" transitionTypes={["bloom-navigation"]}>Portfolio</Link>
+          <Link href="/open-source" transitionTypes={["bloom-navigation"]}>Open source</Link>
           <a className={styles.navCta} href="#contact" onClick={(event) => {
             event.preventDefault()
             window.dispatchEvent(new Event('bloom:open-contact'))
@@ -94,6 +95,7 @@ export default function Layout({ children, home }) {
         <nav className={styles.homeNav} aria-label="Main navigation">
           <Link href="/portfolio" transitionTypes={["bloom-navigation"]}>Portfolio</Link>
           <Link href="/playground" transitionTypes={["bloom-navigation"]}>Playground</Link>
+          <Link href="/open-source" transitionTypes={["bloom-navigation"]}>Open source</Link>
           <a className={styles.navCta} href="/#contact" onClick={(event) => {
             event.preventDefault()
             window.dispatchEvent(new Event('bloom:open-contact'))
@@ -122,6 +124,7 @@ export default function Layout({ children, home }) {
       <nav className={styles.footerNav}>
         <Link href="/portfolio" transitionTypes={["bloom-navigation"]}>Portfolio</Link>
         <Link href="/playground" transitionTypes={["bloom-navigation"]}>Playground</Link>
+        <Link href="/open-source" transitionTypes={["bloom-navigation"]}>Open source</Link>
         {themeToggle}
       </nav>
     </footer>

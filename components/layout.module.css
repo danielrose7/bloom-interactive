@@ -119,6 +119,7 @@
 }
 
 .footerNav a {
+  white-space: nowrap;
   color: var(--page-faint);
   text-decoration: none;
   transition: color 200ms ease;
