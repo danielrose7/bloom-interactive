@@ -1,52 +1,11 @@
+import Link from "next/link";
 import Layout from "../layout";
+import { projects } from "../../lib/open-source";
 import utilStyles from "../../styles/utils.module.css";
 import styles from "../../styles/open-source.module.css";
 
-const projects = [
-  {
-    name: "Story Points",
-    status: "Live",
-    tagline: "Realtime pointing poker for agile teams",
-    description:
-      "One standing URL per room, no accounts, nothing to install. Votes stay hidden until reveal, rooms remember their settings between sprints, and the whole app runs on Cloudflare's free plan.",
-    highlights: [
-      "Ticket queue with Linear and Jira CSV import",
-      "Round history, countdown, and vote statistics",
-      "Six languages, themes, and a joyful reaction layer",
-      "Docs, llms.txt, and an API for agents",
-    ],
-    stack: ["Lit", "Cloudflare Workers", "Durable Objects", "WebSockets"],
-    license: "MIT",
-    image: "/images/open-source/story-points.png",
-    imageAlt: "Story Points room with cards ready to vote",
-    links: [
-      { label: "Try it", href: "https://story-points.danielrose7.workers.dev", primary: true },
-      { label: "Docs", href: "https://story-points.danielrose7.workers.dev/docs/" },
-      { label: "Source", href: "https://github.com/danielrose7/story-points" },
-    ],
-  },
-  {
-    name: "preview-feedback",
-    status: "In development",
-    tagline: "Honor-system feedback for private website previews",
-    description:
-      "A reviewer opens a preview link, drops a pin on the page, and leaves a comment. No account, no browser extension: the unguessable link is the access control. Think the Vercel toolbar's comments, for any host.",
-    highlights: [
-      "One script tag, a ~13 KB web component in a shadow root",
-      "Threads, replies, resolve and reopen, cross-page inbox",
-      "Self-hosted dashboard for every site's threads",
-      "A CLI so you and your agents can pull, reply, and resolve",
-    ],
-    stack: ["Web components", "Cloudflare Workers", "Durable Objects", "TypeScript"],
-    license: null,
-    links: [
-      { label: "Source", href: "https://github.com/danielrose7/preview-feedback", primary: true },
-    ],
-  },
-];
-
 function ProjectCard({ project }) {
-  const { name, status, tagline, description, highlights, stack, license, image, imageAlt, links } = project;
+  const { slug, name, status, tagline, description, highlights, stack, license, image, imageAlt, links } = project;
   const live = status === "Live";
 
   return (
@@ -66,13 +25,16 @@ function ProjectCard({ project }) {
           {stack.map((item) => <li key={item}>{item}</li>)}
         </ul>
         <div className={styles.actions}>
-          {links.map(({ label, href, primary }) => (
+          <Link href={`/open-source/${slug}`} className={styles.buttonPrimary} transitionTypes={["bloom-navigation"]}>
+            Case study <span aria-hidden="true">&rarr;</span>
+          </Link>
+          {links.map(({ label, href }) => (
             <a
               key={label}
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className={primary ? styles.buttonPrimary : styles.button}
+              className={styles.button}
             >
               {label} <span aria-hidden="true">&rarr;</span>
             </a>
