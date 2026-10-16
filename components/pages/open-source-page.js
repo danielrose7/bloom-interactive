@@ -5,7 +5,7 @@ import utilStyles from "../../styles/utils.module.css";
 import styles from "../../styles/open-source.module.css";
 
 function ProjectCard({ project }) {
-  const { slug, name, status, tagline, description, highlights, stack, license, image, imageAlt, links } = project;
+  const { slug, name, status, tagline, description, highlights, stack, license, image, imageAlt, mediaCaption, links } = project;
   const live = status === "Live";
 
   return (
@@ -49,7 +49,7 @@ function ProjectCard({ project }) {
         <div className={`${styles.media} ${styles.mediaPlaceholder}`} aria-hidden="true">
           <span className={styles.pin}><span>1</span></span>
           <span className={`${styles.pin} ${styles.pinSecond}`}><span>2</span></span>
-          <span className={styles.mediaCaption}>Pin it. Comment. Ship.</span>
+          <span className={styles.mediaCaption}>{mediaCaption ?? "Built in the open."}</span>
         </div>
       )}
     </article>

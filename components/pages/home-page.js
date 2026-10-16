@@ -1,12 +1,27 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Layout from "../layout";
 import { ContactTrigger } from "../contact-popover";
 import styles from "../../styles/home.module.css";
+import availabilityStyles from "../../styles/availability-stamp.module.css";
 
 const resumeDate = "2026-09-21";
+
+function getSeasonAndYear(date = new Date()) {
+  const month = date.getMonth();
+  const season = month < 2 || month === 11
+    ? "Winter"
+    : month < 5
+      ? "Spring"
+      : month < 8
+        ? "Summer"
+        : "Fall";
+
+  return `${season} ${date.getFullYear()}`;
+}
 
 const problems = [
   ["Stuck at the start line", "Turn a validated idea and a long list of unknowns into a clear plan and a working first release."],
@@ -23,10 +38,21 @@ const offers = [
 ];
 
 export default function Home() {
+  const [seasonAndYear, setSeasonAndYear] = useState("");
+
+  useEffect(() => {
+    setSeasonAndYear(getSeasonAndYear());
+  }, []);
+
   return <Layout home>
     <div className={`${styles.home} theme-home`}>
       <section className={styles.hero}>
-        <div className={styles.sticker}><span>Accepting</span><strong>Projects</strong><small>Fall 2026</small></div>
+        <div className={styles.sticker} aria-label={`${seasonAndYear || "Current"} availability: fully booked`}>
+          <span>Accepting</span>
+          <strong>Projects</strong>
+          <small>{seasonAndYear || "\u00a0"}</small>
+          <b className={availabilityStyles.stamp} aria-hidden="true">Fully booked</b>
+        </div>
         <p className={styles.kicker}>Principal full stack developer + CTO</p>
         <h1>Build it better.<br />Build it faster.</h1>
         <p className={styles.lede}>Are you running against deadlines or struggling to get off the start line?</p>
