@@ -47,11 +47,11 @@ export default function Home() {
   return <Layout home>
     <div className={`${styles.home} theme-home`}>
       <section className={styles.hero}>
-        <div className={styles.sticker} aria-label={`${seasonAndYear || "Current"} availability: fully booked`}>
+        <div className={styles.sticker} aria-label={`${seasonAndYear || "Current"} availability: booking ahead`}>
           <span>Accepting</span>
           <strong>Projects</strong>
           <small>{seasonAndYear || "\u00a0"}</small>
-          <b className={availabilityStyles.stamp} aria-hidden="true">Fully booked</b>
+          <b className={availabilityStyles.stamp} aria-hidden="true">Booking ahead</b>
         </div>
         <p className={styles.kicker}>Principal full stack developer + CTO</p>
         <h1>Build it better.<br />Build it faster.</h1>
