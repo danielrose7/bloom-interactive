@@ -227,6 +227,31 @@
   line-height: 1.6;
 }
 
+.codeSample {
+  margin-top: 1.5rem;
+}
+
+.codeSample > p {
+  margin: 0 0 0.5rem;
+  color: var(--page-faint);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.codeSample pre {
+  margin: 0;
+  padding: 1rem;
+  overflow-x: auto;
+  border: 1px solid var(--page-border);
+  border-radius: 8px;
+  background: var(--page-surface-soft);
+  color: var(--page-text);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
 .footer {
   display: flex;
   justify-content: space-between;

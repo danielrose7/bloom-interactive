@@ -12,7 +12,7 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
-  const title = `${project.name} case study`;
+  const title = project.status === "Guide" ? project.name : `${project.name} case study`;
   const description = `${project.tagline}. ${project.description}`;
   return {
     title,

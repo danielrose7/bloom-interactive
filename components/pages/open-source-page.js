@@ -26,7 +26,7 @@ function ProjectCard({ project }) {
         </ul>
         <div className={styles.actions}>
           <Link href={`/open-source/${slug}`} className={styles.buttonPrimary} transitionTypes={["bloom-navigation"]}>
-            Case study <span aria-hidden="true">&rarr;</span>
+            {status === "Guide" ? "Read guide" : "Case study"} <span aria-hidden="true">&rarr;</span>
           </Link>
           {links.map(({ label, href }) => (
             <a

@@ -2,7 +2,7 @@ import Link from "next/link";
 import Layout from "../layout";
 import styles from "../../styles/open-source-case-study.module.css";
 
-function Section({ heading, body, items }) {
+function Section({ heading, body, items, code }) {
   return (
     <section className={styles.section}>
       <h2 className={styles.sectionHeading}>{heading}</h2>
@@ -18,6 +18,12 @@ function Section({ heading, body, items }) {
             ))}
           </dl>
         )}
+        {code?.map(({ label, source }) => (
+          <div className={styles.codeSample} key={label}>
+            <p>{label}</p>
+            <pre><code>{source}</code></pre>
+          </div>
+        ))}
       </div>
     </section>
   );

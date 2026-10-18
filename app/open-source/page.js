@@ -1,6 +1,6 @@
 import OpenSourcePage from "../../components/pages/open-source-page";
 
-const description = "Open source tools from Bloom Interactive: Story Points, preview-feedback, and db-test-kit-js.";
+const description = "Open source tools and field guides from Bloom Interactive, including responsive iframe guidance, Story Points, preview-feedback, and db-test-kit-js.";
 
 export const metadata = {
   title: "Open source",
